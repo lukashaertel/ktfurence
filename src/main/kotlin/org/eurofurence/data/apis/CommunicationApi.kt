@@ -25,7 +25,7 @@ class CommunicationApi(basePath: kotlin.String = "https://localhost") : ApiClien
      */
     @Suppress("UNCHECKED_CAST")
     fun apiV2CommunicationPrivateMessagesByMessageIdReadPost(messageId: java.util.UUID): java.time.LocalDateTime {
-        val localVariableBody: kotlin.Any? = null
+        val localVariableBody: kotlin.Boolean = true
         val localVariableQuery: MultiValueMap = mapOf()
         val localVariableHeaders: kotlin.collections.Map<kotlin.String, kotlin.String> = mapOf()
         val localVariableConfig = RequestConfig(
