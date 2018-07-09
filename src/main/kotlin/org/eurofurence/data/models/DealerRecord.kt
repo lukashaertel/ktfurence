@@ -14,6 +14,7 @@ package org.eurofurence.data.models
 import kotlinx.serialization.Serializable
 import org.eurofurence.serial.LocalDateTimeSerializer
 import org.eurofurence.serial.UUIDSerializer
+import java.util.*
 
 /**
  *
@@ -47,7 +48,7 @@ data class DealerRecord(
         val AttendeeNickname: kotlin.String,
         val DisplayName: kotlin.String,
         val Merchandise: kotlin.String,
-        val Links: kotlin.Array<LinkFragment>,
+        val Links: kotlin.Array<LinkFragment>?,
         val ShortDescription: kotlin.String? = null,
         val AboutTheArtistText: kotlin.String? = null,
         val AboutTheArtText: kotlin.String? = null,
@@ -65,5 +66,55 @@ data class DealerRecord(
         val ArtPreviewImageId: java.util.UUID? = null
 ) {
 
-}
+      override fun equals(other: Any?): Boolean {
+          if (this === other) return true
+          if (javaClass != other?.javaClass) return false
 
+          other as DealerRecord
+
+          if (LastChangeDateTimeUtc != other.LastChangeDateTimeUtc) return false
+          if (Id != other.Id) return false
+          if (RegistrationNumber != other.RegistrationNumber) return false
+          if (AttendeeNickname != other.AttendeeNickname) return false
+          if (DisplayName != other.DisplayName) return false
+          if (Merchandise != other.Merchandise) return false
+          if (!Arrays.equals(Links, other.Links)) return false
+          if (ShortDescription != other.ShortDescription) return false
+          if (AboutTheArtistText != other.AboutTheArtistText) return false
+          if (AboutTheArtText != other.AboutTheArtText) return false
+          if (TwitterHandle != other.TwitterHandle) return false
+          if (TelegramHandle != other.TelegramHandle) return false
+          if (AttendsOnThursday != other.AttendsOnThursday) return false
+          if (AttendsOnFriday != other.AttendsOnFriday) return false
+          if (AttendsOnSaturday != other.AttendsOnSaturday) return false
+          if (ArtPreviewCaption != other.ArtPreviewCaption) return false
+          if (ArtistThumbnailImageId != other.ArtistThumbnailImageId) return false
+          if (ArtistImageId != other.ArtistImageId) return false
+          if (ArtPreviewImageId != other.ArtPreviewImageId) return false
+
+          return true
+      }
+
+      override fun hashCode(): Int {
+          var result = LastChangeDateTimeUtc.hashCode()
+          result = 31 * result + Id.hashCode()
+          result = 31 * result + RegistrationNumber
+          result = 31 * result + AttendeeNickname.hashCode()
+          result = 31 * result + DisplayName.hashCode()
+          result = 31 * result + Merchandise.hashCode()
+          result = 31 * result + (Links?.let { Arrays.hashCode(it) } ?: 0)
+          result = 31 * result + (ShortDescription?.hashCode() ?: 0)
+          result = 31 * result + (AboutTheArtistText?.hashCode() ?: 0)
+          result = 31 * result + (AboutTheArtText?.hashCode() ?: 0)
+          result = 31 * result + (TwitterHandle?.hashCode() ?: 0)
+          result = 31 * result + (TelegramHandle?.hashCode() ?: 0)
+          result = 31 * result + (AttendsOnThursday?.hashCode() ?: 0)
+          result = 31 * result + (AttendsOnFriday?.hashCode() ?: 0)
+          result = 31 * result + (AttendsOnSaturday?.hashCode() ?: 0)
+          result = 31 * result + (ArtPreviewCaption?.hashCode() ?: 0)
+          result = 31 * result + (ArtistThumbnailImageId?.hashCode() ?: 0)
+          result = 31 * result + (ArtistImageId?.hashCode() ?: 0)
+          result = 31 * result + (ArtPreviewImageId?.hashCode() ?: 0)
+          return result
+      }
+}

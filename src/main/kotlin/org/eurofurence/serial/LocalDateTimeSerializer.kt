@@ -13,7 +13,7 @@ object LocalDateTimeSerializer : KSerializer<LocalDateTime> {
             override val kind: KSerialClassKind
                 get() = KSerialClassKind.CLASS
             override val name: String
-                get() = LocalDateTime::class.simpleName ?: error("Class error")
+                get() = "java.time.LocalDateTime"
 
             override fun getElementIndex(name: String): Int {
                 return -1

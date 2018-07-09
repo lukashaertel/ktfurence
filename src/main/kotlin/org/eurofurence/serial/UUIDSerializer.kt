@@ -11,7 +11,7 @@ object UUIDSerializer : KSerializer<UUID> {
             override val kind: KSerialClassKind
                 get() = KSerialClassKind.CLASS
             override val name: String
-                get() = UUID::class.simpleName ?: error("Class error")
+                get() = "java.util.UUID"
 
             override fun getElementIndex(name: String): Int {
                 return -1
